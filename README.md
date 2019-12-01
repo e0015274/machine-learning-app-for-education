@@ -11,3 +11,7 @@ In this repository are all the codes to run the FLASK App. You should be familia
 ## App DEMO
 A short animated GIF demo of the App.
 https://miro.medium.com/max/1364/1*pBFDZ0c2RgIQxqib9XDaug.gif
+
+## Bootstrap
+The latest Bootstrap can be download from here:
+https://getbootstrap.com/
