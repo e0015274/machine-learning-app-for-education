@@ -1,0 +1,39 @@
+<!doctype html>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>App</title>
+
+<canvas id="myCanvas">
+
+</canvas>
+
+
+{% if filename %}
+  <div>
+      <img src="{{ url_for('static', filename=filename) }}" width="640 height="640">
+  </div>
+{% else %}
+  <h1>no image for whatever reason</h1>
+{% endif %}
+
+{% for obj in objects %}
+  <p>{{ obj }}</p>
+{% endfor %} 
+
+<script>
+    var im = new Image();
+    im.src = "{{ url_for('static', filename=filename) }}";
+    window.onload = function() {
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        ctx.canvas.width  = 640;
+        ctx.canvas.height = im.height*640/im.width;
+        ctx.drawImage(im, 0, 0, 640, im.height*640/im.width);
+        ctx.beginPath();
+        ctx.lineWidth = 5;
+        ctx.rect(20, 20, 150, 100);
+        ctx.stroke();
+    };
+    </script>
+    

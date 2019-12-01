@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Project 5</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/dist/css/bootstrap.min.css') }}">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+      <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#"><button type="button" class="btn btn-outline-secondary">App Portal POC</button></a>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Settings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Help</a>
+          </li>
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Overview <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/english">English</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Geography</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Mathematics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="science">Science</a>
+            </li>
+          </ul>
+
+        </nav>
+
+        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+          <h1>Spelling Practice</h1>
+
+            <div class="container">
+                <div class="row">
+                  <div class="col-sm">
+                      <canvas id="myCanvas"></canvas>
+                  </div>
+                  <div class="col-sm">
+                        {% for obj in objects %}
+                            <div class="radio">
+                              
+                                <input type="radio" name="optradio" id="rb-{{loop.index0}}" 
+                                value="{{loop.index0}}" 
+                                onclick="myFunction(value);"/>
+                                <label name="{{loop.index0}}:-{{ obj }}#comment">{{loop.index0}} .</label>
+                                <label name="rb-label" id="rb-text{{loop.index0}}"></label>
+                              
+                            </div>
+                        {% endfor %}
+
+                        <p id="demo"></p>
+                        <p id="demo2"></p>
+                  </div>
+                </div>
+            </div>
+
+        </main>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script>
+        var im = new Image();
+        im.src = "{{ url_for('static', filename=filename) }}";
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+        var gW = 640;
+        var K = gW/im.width;
+        window.onload = function() {
+
+            ctx.canvas.width  = gW;
+            ctx.canvas.height = im.height*gW/im.width;
+            ctx.drawImage(im, 0, 0, gW, im.height*gW/im.width);
+        };
+
+        function myFunction(value) {
+            var objData = "{{ objects }}".split(']');
+            indx = Number(value);
+            obj = objData[indx].slice(1).split(',');
+            label = obj[0].replace(/[^a-zA-Z]+/g, '');
+            p = Number(obj[1]).toFixed(4); 
+            x = Number(obj[2]);
+            y = Number(obj[3]);
+            w = Number(obj[4]);
+            h = Number(obj[5]);
+
+            var radios = document.getElementsByName("rb-label");
+            for( i = 0; i < radios.length; i++ ) {
+                    document.getElementById("rb-text"+i).innerHTML = '';
+                }
+          if (label == 'handbag'){label='bag'}
+          if (label == 'diningtable'){label='table'}
+          document.getElementById("demo").innerHTML = 'Answer: '+label;
+          document.getElementById("rb-text"+value).innerHTML = "<input class=\"form-control form-control-sm\" type=\"text\" placeholder=\"Type your answer here\">";
+          ctx.clearRect(0,0,canvas.width, canvas.height);
+          ctx.drawImage(im, 0, 0, gW, im.height*gW/im.width);
+          ctx.beginPath();
+          ctx.lineWidth = 5;
+          ctx.strokeStyle = "#FF0000";
+          ctx.rect(x*gW/im.width, y*gW/im.width, w*gW/im.width, h*gW/im.width);
+          ctx.stroke();
+        }
+    </script>
+  </body>
+</html>

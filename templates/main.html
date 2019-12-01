@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Project 4</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/dist/css/bootstrap.min.css') }}">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+      <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#"><button type="button" class="btn btn-outline-secondary">App Portal POC</button></a>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Settings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Help</a>
+          </li>
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="/">Overview <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="english">English</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Geography</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Mathematics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="science">Science</a>
+            </li>
+          </ul>
+
+          </ul>
+        </nav>
+
+        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+          <h1>Dashboard</h1>
+
+          <section class="row text-center placeholders">
+            <div class="col-6 col-sm-3 placeholder">
+              <img src="static/dash1.png">
+              <h4>English</h4>
+              <div class="text-muted">Points Achieved</div>
+            </div>
+            <div class="col-6 col-sm-3 placeholder">
+              <img src="static/dash2.png">
+              <h4>Geography</h4>
+              <span class="text-muted">Points Achieved</span>
+            </div>
+            <div class="col-6 col-sm-3 placeholder">
+              <img src="static/dash3.png">
+              <h4>Mathematics</h4>
+              <span class="text-muted">Points Achieved</span>
+            </div>
+            <div class="col-6 col-sm-3 placeholder">
+              <img src="static/dash4.png">
+              <h4>Science</h4>
+              <span class="text-muted">Points Achieved</span>
+            </div>
+          </section>
+
+          <h2>Score Board</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Quiz 1</th>
+                  <th>Quiz 2</th>
+                  <th>Quiz 3</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>3424</td>
+                  <td>98</td>
+                  <td>77</td>
+                  <td>96</td>
+                  <td>271</td>
+                </tr>
+                <tr>
+                  <td>1634</td>
+                  <td>91</td>
+                  <td>87</td>
+                  <td>75</td>
+                  <td>253</td>
+                </tr>
+                <tr class="table-info">
+                  <td>2323</td>
+                  <td>93</td>
+                  <td>80</td>
+                  <td>77</td>
+                  <td>250</td>
+                </tr>
+                <tr>
+                  <td>7511</td>
+                  <td>93</td>
+                  <td>70</td>
+                  <td>85</td>
+                  <td>248</td>
+                </tr>
+                <tr>
+                  <td>6534</td>
+                  <td>91</td>
+                  <td>71</td>
+                  <td>86</td>
+                  <td>248</td>
+                </tr>
+                <tr>
+                  <td>4657</td>
+                  <td>89</td>
+                  <td>80</td>
+                  <td>73</td>
+                  <td>242</td>
+                </tr>
+                <tr>
+                  <td>4775</td>
+                  <td>89</td>
+                  <td>80</td>
+                  <td>66</td>
+                  <td>235</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
