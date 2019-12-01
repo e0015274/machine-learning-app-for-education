@@ -21,6 +21,8 @@ https://getbootstrap.com/
 ## Trained Weights
 Download the trained weights from here:
 - https://drive.google.com/open?id=1dHfIwPJOF7sxgk0YerT_EAp_3mvGLF9H
+
 The trained weights must be saved in the "yolo-coco" folder.
 The trained weights must be named "yolov3.weights".
 
+---
